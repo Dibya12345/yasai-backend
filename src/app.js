@@ -16,7 +16,7 @@ const app = express();
 const logger = Logger('app');
 const allowedOrigins = config.ALLOWED_ORIGINS.split(',');
 
-//app.use(cors({ origin: "*" }));
+//app.use(cors({ credentials: true, origin: allowedOrigins }));
 app.use(cors({
   origin: function(origin, callback){
     return callback(null, true);
@@ -42,7 +42,7 @@ app.listen(config.SERVER_PORT, async () => {
   }
 });
 
-/*const key = fs.readFileSync(
+const key = fs.readFileSync(
   path.resolve(__dirname, '../certs/selfSigned.pkey')
 );
 const cert = fs.readFileSync(
@@ -51,8 +51,6 @@ const cert = fs.readFileSync(
 const options = {
   key,
   cert,
-};*/
-const options = {
 };
 const httpsServer = https.createServer(options, app);
 

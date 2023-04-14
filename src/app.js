@@ -42,7 +42,7 @@ app.listen(config.SERVER_PORT, async () => {
   }
 });
 
-const key = fs.readFileSync(
+/*const key = fs.readFileSync(
   path.resolve(__dirname, '../certs/selfSigned.pkey')
 );
 const cert = fs.readFileSync(
@@ -51,6 +51,8 @@ const cert = fs.readFileSync(
 const options = {
   key,
   cert,
+};*/
+const options = {
 };
 const httpsServer = https.createServer(options, app);
 
